@@ -10,7 +10,7 @@ public class RockSpawner : MonoBehaviour
 
     IEnumerator RockSpawning()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         ObjectPooling.Instance.SpawnFromPool("rock1", new Vector3(0, 15, 0), Quaternion.identity);
     }
 }
