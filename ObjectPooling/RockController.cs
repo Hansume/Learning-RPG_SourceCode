@@ -7,12 +7,13 @@ public class RockController : MonoBehaviour, IPoolingObject
     GameObject player;
     CharacterStats playerHealth;
 
-    public float upForce = 2f;
-    public float sideForce = .2f;  
+    public float sideForce = 5f;  
 
     public void OnObjectSpawn()
     {
-        GetComponent<Rigidbody>().velocity -= new Vector3(0, 10, 0);
+        float zForce = Random.Range(-sideForce, sideForce);
+
+        GetComponent<Rigidbody>().velocity = new Vector3(0, -10, zForce);
 
         player = PlayerManager.instance.player;
         playerHealth = player.GetComponent<CharacterStats>();
