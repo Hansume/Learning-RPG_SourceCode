@@ -1,11 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RockSpawner : MonoBehaviour
 {
+    bool isSpawning = false;
     private void Update()
     {
-       ObjectPooling.Instance.SpawnFromPool("rock1", new Vector3(0,15,0), Quaternion.identity);
+        if (!isSpawning)
+        {
+            StartCoroutine(RockSpawning());
+        }
+    }
+
+    IEnumerator RockSpawning()
+    {
+        isSpawning = true;
+        yield return new WaitForSeconds(2f);
+        ObjectPooling.Instance.SpawnFromPool("rock1", new Vector3(0, 15, 0), Quaternion.identity);
+        isSpawning = false;
     }
 }
